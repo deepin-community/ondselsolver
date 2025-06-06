@@ -1,4 +1,14 @@
 #!/usr/bin/make -f
 
+# See debhelper(7) (uncomment to enable).
+# Output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
 %:
 	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DONDSELSOLVER_BUILD_TESTS="On"
+
+override_dh_auto_test:
+	-dh_auto_test
